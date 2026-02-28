@@ -14,20 +14,29 @@
 ## 설치 및 실행
 ### 1. 환경 변수 설정
 ```bash
-export BD_USER={DB USER}
-export DB_PASS={DB PASSWORD}
-export DB_HOST={DB HOST}
-export DB_PORT=3306(default)
-export DB_NAME={DB NAME}
+export DBUSER="{DB USER}"
+export DB_PASS="{DB PASSWORD}"
+export DB_HOST="{DB HOST}"
+export DB_PORT="3306(default)"
+export DB_NAME="{DB NAME}"
 ```
 
-### 2. 소스 코드에서 직접 빌드
+### 2. 빌드된 바이너리 사용
+```bash
+# Linux / macOS
+./user-api-service
+
+# Windows
+user-api-service.exe
+```
+
+### 3. 소스 코드에서 직접 빌드
 ```bash
 # 모듈 다운로드
 go mod tidy
 
 # 빌드
-go build -o user-api-service
+go build
 
 # 실행
 ./user-api-service
@@ -36,8 +45,23 @@ go build -o user-api-service
 #### 플랫폼별 빌드 예시
 ```bash
 # Linux 64-bit
-GOOS=linux GOARCH=amd64 go build -o user-api-service
+GOOS=linux GOARCH=amd64 go build
+
+# macOS 64-bit (Apple Silicon)
+GOOS=darwin GOARCH=arm64 go build
 
 # Windows 64-bit
-GOOS=Windows GOARCH=amd64 go build -o user-api-service.exe
+GOOS=windows GOARCH=amd64 go build
+```
+
+## 데이터베이스 예시
+```sql
+CREATE TABLE users (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    age INT UNSIGNED,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
 ```
