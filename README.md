@@ -54,7 +54,10 @@ GOOS=darwin GOARCH=arm64 go build
 GOOS=windows GOARCH=amd64 go build
 ```
 
-## 데이터베이스 예시
+## 데이터베이스
+이 서버는 MySQL 또는 MySQL 호환 DB와 동작합니다.
+
+- users TABLE 예제:
 ```sql
 CREATE TABLE users (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
