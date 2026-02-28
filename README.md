@@ -1,4 +1,4 @@
-# user api service
+# user api server
 
 ## API Endpoints
 
@@ -24,10 +24,10 @@ export DB_NAME="{DB NAME}"
 ### 2. 빌드된 바이너리 사용
 ```bash
 # Linux / macOS
-./user-api-service
+./user-api-server
 
 # Windows
-user-api-service.exe
+user-api-server.exe
 ```
 
 ### 3. 소스 코드에서 직접 빌드
@@ -39,7 +39,7 @@ go mod tidy
 go build
 
 # 실행
-./user-api-service
+./user-api-server
 ```
 
 #### 플랫폼별 빌드 예시
