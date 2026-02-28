@@ -68,3 +68,14 @@ CREATE TABLE users (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 ```
+
+## Third-Party Libraries
+This project uses the following open-source libraries:
+
+- [github.com/go-sql-driver/mysql](https://github.com/go-sql-driver/mysql) — MIT License
+- [github.com/gorilla/mux](https://github.com/gorilla/mux) — BSD 3-Clause License
+
+All third-party libraries are used according to their license terms.
+
+## License
+This project is licensed under [Zero-Clause BSD (0BSD)](LICENSE).
