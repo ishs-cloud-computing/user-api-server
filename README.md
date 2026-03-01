@@ -36,28 +36,16 @@ user-api-server.exe
 go mod tidy
 
 # 빌드
-go build
+GOOS=linux GOARCH=amd64 go build
 
 # 실행
 ./user-api-server
 ```
 
-#### 플랫폼별 빌드 예시
-```bash
-# Linux 64-bit
-GOOS=linux GOARCH=amd64 go build
-
-# macOS 64-bit (Apple Silicon)
-GOOS=darwin GOARCH=arm64 go build
-
-# Windows 64-bit
-GOOS=windows GOARCH=amd64 go build
-```
-
 ## 데이터베이스
 이 서버는 MySQL 또는 MySQL 호환 DB와 동작합니다.
 
-- users TABLE 예제:
+####  users TABLE 예제
 ```sql
 CREATE TABLE users (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
