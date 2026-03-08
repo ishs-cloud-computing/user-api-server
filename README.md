@@ -14,7 +14,7 @@
 ## 설치 및 실행
 ### 1. 환경 변수 설정
 ```bash
-export DBUSER="{DB USER}"
+export DB_USER="{DB USER}"
 export DB_PASS="{DB PASSWORD}"
 export DB_HOST="{DB HOST}"
 export DB_PORT="3306(default)"
