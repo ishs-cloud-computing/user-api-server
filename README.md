@@ -25,8 +25,10 @@
 
 ### 2. 빌드된 바이너리 사용
 ```bash
-# Linux / macOS
+# 압축 해제
 unxz ./user-api-server.xz
+
+# 실행
 ./user-api-server
 ```
 
