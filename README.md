@@ -13,21 +13,21 @@
 
 ## 설치 및 실행
 ### 1. 환경 변수 설정
-```bash
-export DB_USER="{DB USER}"
-export DB_PASS="{DB PASSWORD}"
-export DB_HOST="{DB HOST}"
-export DB_PORT="3306(default)"
-export DB_NAME="{DB NAME}"
-```
+| Name | Description           |
+|------|-----------------------|
+| DB_USER | 데이터베이스 유저 이름   |
+| DB_PASS | 데이터베이스 비밀번호    |
+| DB_HOST | 데이터베이스 접속 주소   |
+| DB_PORT | 데이터베이스 접속 포트   |
+| DB_NAME | 데이터베이스 이름       |
+
+> DB_PORT의 기본 값은 3306입니다.
 
 ### 2. 빌드된 바이너리 사용
 ```bash
 # Linux / macOS
+unxz ./user-api-server.xz
 ./user-api-server
-
-# Windows
-user-api-server.exe
 ```
 
 ### 3. 소스 코드에서 직접 빌드
