@@ -17,8 +17,13 @@ func initDB() *sql.DB {
 	dbPort := os.Getenv("DB_PORT") // default: 3306
 	dbName := os.Getenv("DB_NAME")
 
-	if dbUser == "" || dbPass == "" || dbHost == "" || dbPort == "" || dbName == "" {
-		log.Fatal("DB 환경변수 미설정 (DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME)")
+	if dbPort == "" {
+		log.Println("DB_PORT 환경변수 미설정, 기본값 사용: 3306")
+		dbPort = "3306"
+	}
+
+	if dbUser == "" || dbPass == "" || dbHost == "" || dbName == "" {
+		log.Fatal("DB 환경변수 미설정 (DB_USER, DB_PASS, DB_HOST, DB_NAME)")
 	}
 
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true",
