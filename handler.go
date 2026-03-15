@@ -7,8 +7,6 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 func writeJSON(w http.ResponseWriter, status int, data any) {
@@ -20,8 +18,7 @@ func writeJSON(w http.ResponseWriter, status int, data any) {
 }
 
 func parseID(w http.ResponseWriter, r *http.Request) (int, bool) {
-	params := mux.Vars(r)
-	id, err := strconv.Atoi(params["id"])
+	id, err := strconv.Atoi(r.PathValue("id"))
 	if err != nil {
 		http.Error(w, "Invalid ID", http.StatusBadRequest)
 		return 0, false

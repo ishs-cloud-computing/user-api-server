@@ -4,8 +4,6 @@ import (
 	"database/sql"
 	"log"
 	"net/http"
-
-	"github.com/gorilla/mux"
 )
 
 var db *sql.DB
@@ -18,16 +16,14 @@ func main() {
 		}
 	}()
 
-	r := mux.NewRouter()
-
-	r.HandleFunc("/users", createUser).Methods(http.MethodPost)
-	r.HandleFunc("/users", getUsers).Methods(http.MethodGet)
-	r.HandleFunc("/users/{id}", getUser).Methods(http.MethodGet)
-	r.HandleFunc("/users/{id}", updateUser).Methods(http.MethodPut)
-	r.HandleFunc("/users/{id}", deleteUser).Methods(http.MethodDelete)
-
-	r.HandleFunc("/health", healthCheck).Methods(http.MethodGet)
+	mux := http.NewServeMux()
+	mux.HandleFunc("GET /health", healthCheck)
+	mux.HandleFunc("POST /users", createUser)
+	mux.HandleFunc("GET /users", getUsers)
+	mux.HandleFunc("GET /users/{id}", getUser)
+	mux.HandleFunc("PUT /users/{id}", updateUser)
+	mux.HandleFunc("DELETE /users/{id}", deleteUser)
 
 	log.Println("서버 시작: http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", r))
+	log.Fatal(http.ListenAndServe(":8080", mux))
 }
