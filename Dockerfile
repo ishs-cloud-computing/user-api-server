@@ -14,6 +14,8 @@ RUN GCO_ENABLED=0 GOOS=linux GOARCH=amd64 \
 
 FROM scratch
 
+LABEL org.opencontainers.image.source=https://github.com/ishs-cloud-computing/user-api
+
 COPY --from=builder /app/user-api /user-api
 
 EXPOSE 8080
