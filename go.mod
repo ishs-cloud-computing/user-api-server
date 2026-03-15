@@ -1,4 +1,4 @@
-module user-api-server
+module user-api
 
 go 1.25.7
 

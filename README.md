@@ -1,4 +1,4 @@
-# user api server
+# User API
 
 ## API Endpoints
 
