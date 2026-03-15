@@ -8,11 +8,11 @@ RUN go mod download
 COPY . .
 RUN GCO_ENABLED=0 GOOS=linux GOARCH=amd64 \
     go build \
-    -ldflags="-s -w -extldflags '-static'" \
+    -ldflags="-s -w" \
     -trimpath \
     -o user-api .
 
-FROM scratch
+FROM alpine:3.23.3
 
 LABEL org.opencontainers.image.source=https://github.com/ishs-cloud-computing/user-api
 
