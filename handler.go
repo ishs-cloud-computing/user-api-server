@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
+	"user-api/internal/model"
 )
 
 func writeJSON(w http.ResponseWriter, status int, data any) {
@@ -26,7 +27,7 @@ func parseID(w http.ResponseWriter, r *http.Request) (int, bool) {
 	return id, true
 }
 
-func validateUser(user User) string {
+func validateUser(user model.User) string {
 	if strings.TrimSpace(user.Name) == "" {
 		return "name은 필수입니다."
 	}
@@ -41,7 +42,7 @@ func validateUser(user User) string {
 
 // POST /users
 func createUser(w http.ResponseWriter, r *http.Request) {
-	var user User
+	var user model.User
 	if err := json.NewDecoder(r.Body).Decode(&user); err != nil {
 		log.Printf("JSON 디코딩 실패: %v", err)
 		http.Error(w, "잘못된 요청 형식입니다.", http.StatusBadRequest)
@@ -83,9 +84,9 @@ func getUsers(w http.ResponseWriter, _ *http.Request) {
 		}
 	}()
 
-	users := make([]User, 0)
+	users := make([]model.User, 0)
 	for rows.Next() {
-		var user User
+		var user model.User
 		if err := rows.Scan(&user.ID, &user.Name, &user.Email, &user.Age); err != nil {
 			log.Printf("rows 스캔 실패: %v", err)
 			continue
@@ -109,7 +110,7 @@ func getUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var user User
+	var user model.User
 	err := db.QueryRow(
 		"SELECT id, name, email, age FROM users WHERE id = ?", id,
 	).Scan(&user.ID, &user.Name, &user.Email, &user.Age)
@@ -134,7 +135,7 @@ func updateUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var user User
+	var user model.User
 	if err := json.NewDecoder(r.Body).Decode(&user); err != nil {
 		log.Printf("JSON 디코딩 실패: %v", err)
 		http.Error(w, "잘못된 요청 형식입니다", http.StatusBadRequest)
