@@ -1,27 +1,34 @@
 # User API
 
+## ✨ Refactoring Process
+
+현재 프로젝트는 단일 핸들러 중심 구조에서 레이어드 아키텍처로 전환하는 리팩토링을 진행중.  
+이로 인해 `develop` 브랜치에서 일부 코드가 동작하지 않거나, 사용되지 않는 더미 코드가 포함되어있을 수 있음.
+
+
+
 ## API Endpoints
 
-| Method | Path          | Description          |
-| ------ | ------------- | -------------------- |
-| POST   | `/users`      | 새 사용자 생성       |
-| GET    | `/users`      | 모든 사용자 조회     |
-| GET    | `/users/{id}` | 특정 사용자 조회     |
+| Method | Path          | Description |
+|--------|---------------|-------------|
+| POST   | `/users`      | 새 사용자 생성    |
+| GET    | `/users`      | 모든 사용자 조회   |
+| GET    | `/users/{id}` | 특정 사용자 조회   |
 | PUT    | `/users/{id}` | 특정 사용자 업데이트 |
-| DELETE | `/users/{id}` | 특정 사용자 삭제     |
-| GET    | `/health`     | 서버 상태 확인       |
+| DELETE | `/users/{id}` | 특정 사용자 삭제   |
+| GET    | `/health`     | 서버 상태 확인    |
 
 ## 설치 및 실행
 
 ### 1. 환경 변수 설정
 
-| Name    | Description            |
-| ------- | ---------------------- |
+| Name    | Description  |
+|---------|--------------|
 | DB_USER | 데이터베이스 유저 이름 |
 | DB_PASS | 데이터베이스 비밀번호  |
 | DB_HOST | 데이터베이스 접속 주소 |
 | DB_PORT | 데이터베이스 접속 포트 |
-| DB_NAME | 데이터베이스 이름      |
+| DB_NAME | 데이터베이스 이름    |
 
 > DB_PORT의 기본 값은 3306입니다.
 
